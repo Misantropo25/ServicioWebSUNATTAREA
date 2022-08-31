@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="listarEmpresas">
+        <s:complexType />
+      </s:element>
+      <s:element name="listarEmpresasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listarEmpresasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscarEmpresa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RUC" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscarEmpresaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscarEmpresaResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="obtenerDatosEmpresa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RUC" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerDatosEmpresaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obtenerDatosEmpresaResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfString" nillable="true" type="tns:ArrayOfString" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="listarEmpresasSoapIn">
+    <wsdl:part name="parameters" element="tns:listarEmpresas" />
+  </wsdl:message>
+  <wsdl:message name="listarEmpresasSoapOut">
+    <wsdl:part name="parameters" element="tns:listarEmpresasResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscarEmpresaSoapIn">
+    <wsdl:part name="parameters" element="tns:buscarEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="buscarEmpresaSoapOut">
+    <wsdl:part name="parameters" element="tns:buscarEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="obtenerDatosEmpresaSoapIn">
+    <wsdl:part name="parameters" element="tns:obtenerDatosEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="obtenerDatosEmpresaSoapOut">
+    <wsdl:part name="parameters" element="tns:obtenerDatosEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="listarEmpresasHttpGetIn" />
+  <wsdl:message name="listarEmpresasHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="buscarEmpresaHttpGetIn">
+    <wsdl:part name="RUC" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarEmpresaHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="obtenerDatosEmpresaHttpGetIn">
+    <wsdl:part name="RUC" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="obtenerDatosEmpresaHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="listarEmpresasHttpPostIn" />
+  <wsdl:message name="listarEmpresasHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="buscarEmpresaHttpPostIn">
+    <wsdl:part name="RUC" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarEmpresaHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="obtenerDatosEmpresaHttpPostIn">
+    <wsdl:part name="RUC" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="obtenerDatosEmpresaHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:portType name="WebService1Soap">
+    <wsdl:operation name="listarEmpresas">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Listar Empresas con PA</wsdl:documentation>
+      <wsdl:input message="tns:listarEmpresasSoapIn" />
+      <wsdl:output message="tns:listarEmpresasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarEmpresa">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Buscar Empresa con PA</wsdl:documentation>
+      <wsdl:input message="tns:buscarEmpresaSoapIn" />
+      <wsdl:output message="tns:buscarEmpresaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDatosEmpresa">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obtener datos de la Empresa con PA</wsdl:documentation>
+      <wsdl:input message="tns:obtenerDatosEmpresaSoapIn" />
+      <wsdl:output message="tns:obtenerDatosEmpresaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebService1HttpGet">
+    <wsdl:operation name="listarEmpresas">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Listar Empresas con PA</wsdl:documentation>
+      <wsdl:input message="tns:listarEmpresasHttpGetIn" />
+      <wsdl:output message="tns:listarEmpresasHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarEmpresa">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Buscar Empresa con PA</wsdl:documentation>
+      <wsdl:input message="tns:buscarEmpresaHttpGetIn" />
+      <wsdl:output message="tns:buscarEmpresaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDatosEmpresa">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obtener datos de la Empresa con PA</wsdl:documentation>
+      <wsdl:input message="tns:obtenerDatosEmpresaHttpGetIn" />
+      <wsdl:output message="tns:obtenerDatosEmpresaHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebService1HttpPost">
+    <wsdl:operation name="listarEmpresas">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Listar Empresas con PA</wsdl:documentation>
+      <wsdl:input message="tns:listarEmpresasHttpPostIn" />
+      <wsdl:output message="tns:listarEmpresasHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarEmpresa">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Buscar Empresa con PA</wsdl:documentation>
+      <wsdl:input message="tns:buscarEmpresaHttpPostIn" />
+      <wsdl:output message="tns:buscarEmpresaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDatosEmpresa">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obtener datos de la Empresa con PA</wsdl:documentation>
+      <wsdl:input message="tns:obtenerDatosEmpresaHttpPostIn" />
+      <wsdl:output message="tns:obtenerDatosEmpresaHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="listarEmpresas">
+      <soap:operation soapAction="http://tempuri.org/listarEmpresas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarEmpresa">
+      <soap:operation soapAction="http://tempuri.org/buscarEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDatosEmpresa">
+      <soap:operation soapAction="http://tempuri.org/obtenerDatosEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="listarEmpresas">
+      <soap12:operation soapAction="http://tempuri.org/listarEmpresas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarEmpresa">
+      <soap12:operation soapAction="http://tempuri.org/buscarEmpresa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDatosEmpresa">
+      <soap12:operation soapAction="http://tempuri.org/obtenerDatosEmpresa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1HttpGet" type="tns:WebService1HttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="listarEmpresas">
+      <http:operation location="/listarEmpresas" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarEmpresa">
+      <http:operation location="/buscarEmpresa" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDatosEmpresa">
+      <http:operation location="/obtenerDatosEmpresa" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1HttpPost" type="tns:WebService1HttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="listarEmpresas">
+      <http:operation location="/listarEmpresas" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarEmpresa">
+      <http:operation location="/buscarEmpresa" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDatosEmpresa">
+      <http:operation location="/obtenerDatosEmpresa" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService1">
+    <wsdl:port name="WebService1Soap" binding="tns:WebService1Soap">
+      <soap:address location="http://www.apostolesdecristo.somee.com/WebService1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1Soap12" binding="tns:WebService1Soap12">
+      <soap12:address location="http://www.apostolesdecristo.somee.com/WebService1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1HttpGet" binding="tns:WebService1HttpGet">
+      <http:address location="http://www.apostolesdecristo.somee.com/WebService1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1HttpPost" binding="tns:WebService1HttpPost">
+      <http:address location="http://www.apostolesdecristo.somee.com/WebService1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

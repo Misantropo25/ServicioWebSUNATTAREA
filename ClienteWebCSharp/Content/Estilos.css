@@ -1,0 +1,51 @@
+﻿body {
+}
+
+.Label1 {
+    color: black;
+    font-size: 14px;
+    font-family: sans-serif;
+    font-weight: bold;
+ 
+}
+
+.TextoB {
+    color: black;
+    font-size: 14px;
+    font-family: sans-serif;
+    border-radius: 4px;
+    text-transform: capitalize;
+    border: 1px solid #ccc;
+    
+}
+.Buttonbusca {
+   
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-family: sans-serif;
+    -moz-border-radius: 25px;
+    background-color: #337ab7;
+    color:white;
+}
+
+
+.TablaInfo {
+  
+    border-radius: 4px;
+    text-transform: capitalize;
+    text-align:left;
+
+    border-collapse: collapse;
+    color: black;
+    font-size: 14px;
+    font-family: sans-serif;
+}
+.Buttonvolver {
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-family: sans-serif;
+    -moz-border-radius: 25px;
+    background-color: #d9534f;
+    color: white;
+}
+
